@@ -1,0 +1,23 @@
+{
+  "name": "atlas",
+  "version": "1.0.0",
+  "description": "Atlas Retail ERP",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/docjdxb/Atlas.git"
+  },
+  "author": "Joao Vieira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/docjdxb/Atlas/issues"
+  },
+  "homepage": "https://github.com/docjdxb/Atlas#readme",
+  "dependencies": {
+    "express": "4.17.1"
+  }
+}
