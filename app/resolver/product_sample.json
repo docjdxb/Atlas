@@ -1,0 +1,132 @@
+{
+    product_id: 1,
+    product_status: {code: 'A',
+                     description: 'ACTIVE'},
+    short_description: 'Dummy Product Depscription',
+    long_description: 'Dummy Product Long Description',
+    product_type: 'Simple',
+    pack_ind: TRUE,
+    img_url: 'https//www.atlas.com',
+    barcode: {code: '123456789012',
+              type: 'EAN13'},
+    uom: 'UNIT',
+    price_list: {price: 1.00,
+                currency: 'USD',
+                price_zone: {zone_id: 1,
+                             zone_desc: 'US'},
+                start_date_time: '01012020',
+                end_date_time: '01012030',
+    create_date: '01012020',
+    last_update_date: '01012020'
+}
+
+'use strict';
+
+// Product GraphQL Schema
+
+const product_type = `
+type Product {
+            product_id: String!
+            product_status: ProductStatus!
+            short_description: String!
+            long_description: String!
+            product_type: String!
+            pack_ind: Boolean!
+            img_url: String
+            barcode: Barcode!
+            uom: String!
+            price_list: [Price!]!
+            create_date: String!
+            last_update_date: String!
+            product_hierarchy: ProductHierarchy!
+            product_dimensions: ProductDimensions
+            product_attributes: [ProductAttribute!]
+
+}
+type Query{
+  Product: Product
+
+}
+type Price {
+            price: Float!
+            currency: String!
+            price_zone: PriceZone
+            start_date_time: String!
+            end_date_time: String
+}
+type Barcode {
+            code: String!
+            type: String!
+}
+type PriceZone {
+            zone_id: Int!
+            zone_desc: String!
+
+}
+type ProductStatus {
+          code: String!
+          description: String!
+
+}
+type ProductHierarchy {
+          subclass: Subclass!
+          class: Class!
+          department: Department!
+          group: Group!
+          division: Division!
+}
+interface ProductHierarchyLevel {
+          code: String!
+          desc: String
+          create_date: String!
+}
+type Subclass implements ProductHierarchyLevel {
+          code: String!
+          desc: String
+          create_date: String!
+}
+type Class implements ProductHierarchyLevel {
+          code: String!
+          desc: String
+          create_date: String!
+}
+type Department implements ProductHierarchyLevel {
+          code: String!
+          desc: String
+          create_date: String!
+}
+type Group implements ProductHierarchyLevel {
+          code: String!
+          desc: String
+          create_date: String!
+}
+type Division implements ProductHierarchyLevel {
+          code: String!
+          desc: String
+          create_date: String!
+}
+type ProductDimensions {
+          dim_uom: Float
+          weight_uom: String
+          height: Float
+          width: Float
+          length: Float
+          pack_size: Int
+          case_size: Int
+          case_weight: Float
+          pallete_base: Int
+          pallete_high: Int
+          pallete_weight: Float
+}
+type ProductAttribute {
+          attribute: Attribute
+          value: String!
+}
+type Attribute {
+          code: String!
+          desc: String!
+          type: String!
+          lov: [String]
+}`
+
+module.exports = product_type;

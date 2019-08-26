@@ -1,0 +1,98 @@
+type Product {
+            product_id: String!
+            product_status: ProductStatus!
+            short_description: String!
+            long_description: String!
+            product_type: String!
+            pack_ind: Boolean!
+            img_url: Url
+            barcode: Barcode!
+            uom: String!
+            price_list: [Price!]!
+            create_date: String!
+            last_update_date: String!
+            product_hierarchy: ProductHierarchy!
+            product_dimensions: ProductDimensions
+            product_attributes: [ProductAttribute!]
+}
+type Price {
+            price: Float!
+            currency: String!
+            price_zone: PriceZone
+            start_date_time: String!
+            end_date_time: String
+}
+type Barcode {
+            code: String!
+            type: String!
+}
+type PriceZone {
+            zone_id: Int!
+            zone_desc: String!
+
+}
+type ProductStatus {
+          code: String!
+          description: String!
+
+}
+type ProductHierarchy {
+          subclass: Subclass!
+          class: Class!
+          department: Department!
+          group: Group!
+          division: Division!
+}
+type ProductHierarchyLevel {
+          code: String!
+          desc: String
+          create_date: String!
+}
+type Subclass implements ProductHierarchyLevel {
+          code: String!
+          desc: String
+          create_date: String!
+}
+type Class implements ProductHierarchyLevel {
+          code: String!
+          desc: String
+          create_date: String!
+}
+type Department implements ProductHierarchyLevel {
+          code: String!
+          desc: String
+          create_date: String!
+}
+type Group implements ProductHierarchyLevel {
+          code: String!
+          desc: String
+          create_date: String!
+}
+type Division implements ProductHierarchyLevel {
+          code: String!
+          desc: String
+          create_date: String!
+}
+type ProductDimensions {
+          dim_uom: Float
+          weight_uom: String
+          height: Float
+          width: Float
+          length: Float
+          pack_size: Int
+          case_size: Int
+          case_weight: Float
+          pallete_base: Int
+          pallete_high: Int
+          pallete_weight: Float
+}
+type ProductAttribute {
+          attribute: Attribute
+          value: String!
+}
+type Attribute {
+          code: String!
+          desc: String!
+          type: String!
+          lov: [String]
+}
