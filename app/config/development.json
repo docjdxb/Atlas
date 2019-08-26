@@ -1,4 +1,4 @@
 {
   "host" : "http://localhost:3000",
-  "dbURI" : "mongodb+srv://docj:docj01@cluster0-e1vry.mongodb.net/test?retryWrites=true&w=majority",
+  "dbURI" : "mongodb+srv://docj:docj01@cluster0-e1vry.mongodb.net/atlasdb?retryWrites=true&w=majority"
 }

@@ -11,6 +11,7 @@ const { buildSchema } = require('graphql');
 //Setup App Files
 const atlas = require('./app');
 
+
 // GraphQL schema
 var schema = buildSchema(atlas.schemas);
 

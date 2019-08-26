@@ -1,4 +1,5 @@
 'use strict';
+const productdb = require('../db/product/product.js')
 
 const productData = [
   {
@@ -73,7 +74,7 @@ const productData = [
 ]
 ;
 
-
+//Gets a Propduct by ID
 var getProduct = function(args) {
     var id = args.id;
     return productData.filter(product => {
@@ -81,10 +82,13 @@ var getProduct = function(args) {
     })[0];
 }
 
+
+//Gets an array of Products by description
 var getProducts = function(args) {
     if (args.description) {
         var description = args.description;
-        return productData.filter(product => product.short_description === description);
+        var productarray = productdb.findProduct(description);
+        return productarray
     } else {
         return productData;
     }
@@ -94,5 +98,4 @@ var getProducts = function(args) {
 module.exports = {
         product: getProduct,
         products: getProducts
-
 };
